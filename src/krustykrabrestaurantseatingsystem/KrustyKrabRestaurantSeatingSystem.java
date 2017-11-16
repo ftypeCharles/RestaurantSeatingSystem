@@ -20,6 +20,10 @@ public class KrustyKrabRestaurantSeatingSystem {
         //HI!
         System.out.println("HI!");
         
+        Reservation r = new Reservation("charles", "lyding", null, "1/1/2018","1:11");
+        ReservationList l = new ReservationList();
+        l.addToList(r);
+        
     }
     
 }

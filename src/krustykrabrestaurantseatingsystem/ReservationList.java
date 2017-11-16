@@ -14,9 +14,15 @@ public class ReservationList {
     
     ArrayList rList = new ArrayList();
     
+    public ReservationList(){
+        
+    }
+    
     public void addToList(Reservation r){
         rList.add(r);
     }
+    
+    
     
    
 }

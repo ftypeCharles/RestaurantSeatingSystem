@@ -16,6 +16,10 @@ public class KrustyKrabRestaurantSeatingSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        //HI!
+        System.out.println("HI!");
+        
     }
     
 }

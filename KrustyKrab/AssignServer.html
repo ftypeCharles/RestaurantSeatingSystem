@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assign Server</title>
+    </head>
+    
+    <style>
+    body{
+        background: whitesmoke;
+        
+    }
+    h1{
+        text-align: center;
+        background-color: dodgerblue;
+		color: white;
+        font-size: 144;
+		font: 64px Impact;
+		font-weight: bold;
+		margin-top: 5px;
+    	margin-bottom: 50px;
+    	padding-left: 5px;
+        
+        
+    }
+    form{
+        
+		text-align: center;
+		background-color: rgb(238, 238, 238);
+		
+    }
+	ul li{
+		background-color: rgb(238, 238, 238);
+		font: 20px Georgia, sans-serif;
+	}
+
+	ul li:hover{
+    background: #888;
+    color: #fff;
+    
+	}
+
+	label{
+		font: 28px Verdana, sans-serif;
+	}
+	input{
+		width: 200px;
+		height: 25px;
+	}
+	button{
+		background-color: dodgerblue;
+    	color: white;
+    	text-align: center;
+    	
+		font: 24px Impact;
+	}
+        
+   
+    
+    </style>
+	
+    <body>
+		
+		<h1>Assign Server</h1>
+
+		<a href="reservationSim.html"><button>View Reservation List</button></a>
+		
+		<form id = "serverForm">
+			
+            <label for="Server">Server:</label>
+			<input id = "serverInput" placeholder ="First Name of Server">
+			<br>
+			<br>
+			<br>
+			<br>
+			
+			
+			<label for="Table Number ">Table Number:</label>
+			<input type = "number" input id = "tableNumberInput" placeholder = "Table Number">
+			<br>
+			<br>
+			<br>
+			<br>
+
+
+
+			<button type = "button" onclick="assignServer()"> Assign Server</button>
+
+			
+
+		</form>
+
+		<ul id = "serverList">
+				
+		</ul>
+
+
+		<script>
+			
+			function Server(name, tableNumber){
+				this.name = name;
+				this.tableNumber = tableNumber;
+
+			}
+
+			var serverList = new Array(10);
+			var j = 1;
+
+			var taken = false;
+			
+			function assignServer() {
+				var item = document.getElementById("serverInput").value;
+				var item2 = document.getElementById("tableNumberInput").value;
+				
+				
+				//Check if all Info is filled
+				if(item && item2){
+					//check if table is taken by server
+					for(k in serverList){
+						if(serverList[k].tableNumber == item2){
+							
+							alert("Table Taken Please Enter a Different Table");
+							taken = true;
+						}else{
+							taken = false;
+						}
+					}
+
+					if(!taken){
+						var text = document.createTextNode("SERVER: " + item + " TABLE NUMBER: " + item2);
+						var newItem = document.createElement("li");
+						var anotherItem = document.createElement("br");
+						newItem.appendChild(text);
+						document.getElementById("serverList").appendChild(newItem);
+						document.getElementById("serverList").appendChild(anotherItem);
+					
+						serverList[j] = new Server(item, item2);
+						j++;
+					}else{
+						
+					}
+					
+				}else{
+					alert("Enter all Information Please!")
+				}
+				
+				
+				
+
+				var reservationListItem = document.getElementsByTagName("li");
+				for (var i = 0; i < reservationListItem.length; i++){
+					reservationListItem[i].onclick = function(){
+						this.parentElement.removeChild(this);
+						
+						
+						
+
+					}
+				}
+				
+
+
+			}
+			
+			
+			
+
+		</script>
+	</body>
+</html>			

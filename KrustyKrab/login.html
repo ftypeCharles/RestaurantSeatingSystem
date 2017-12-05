@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LogIn</title>
+    </head>
+    
+    <style>
+    
+    h1{
+        text-align: center;
+    }
+
+    body{
+        background-image: url("kk.png");
+    }
+
+    label{
+		font: 28px Verdana, sans-serif;
+	}
+	input{
+		width: 200px;
+		height: 25px;
+	}
+	button{
+		background-color: dodgerblue;
+    	color: white;
+    	text-align: center;
+    	
+		font: 24px Impact;
+	}
+
+    form{
+        
+		text-align: center;
+		
+		
+    }
+    
+    </style>
+	
+    <body>
+        <h1><img src="logo.png"></h1>
+        
+        <form id = "logInForm">
+            
+			<input id = "userInput" placeholder ="username">
+			<br>
+			<br>
+			<br>
+			<br>
+			
+			
+			
+			<input id = "password" placeholder = "password">
+			<br>
+			<br>
+			<br>
+			<br>
+
+
+
+			<button type = "button" onclick="login()"> Login!</button>
+        </form>
+
+        <script>
+
+            
+            
+            //login function
+            function login(){
+                //input values
+                var item = document.getElementById("userInput").value;
+			    var item2 = document.getElementById("password").value;
+                
+                //if form is complete
+                if(item && item2){
+                    //if credential is correct
+                    if(item == "admin" && item2 == "password"){
+                        alert("Success!");
+                        document.location.href = "AssignServer.html";
+                    }else{
+                        alert("Invalid Credentials")
+                    }
+
+                }else{
+                    alert("Please Complete the Form");
+                }
+                
+
+                
+            }
+            
+            
+
+        
+        </script>
+
+    </body>
+</html>			

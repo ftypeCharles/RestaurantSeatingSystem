@@ -60,9 +60,11 @@
 	
     <body>
 		
-		<h1>Reservation List</h1>
+		<h1>Add Reservation</h1>
 
 		<a href="AssignServer.html"><button>Assign Server</button></a>
+		<a href="Settings.html"><button>Settings</button></a>
+		<a href="help.html"><button>Help</button></a>
 		
 		<form id = "reservationForm">
 			
@@ -108,6 +110,12 @@
 
 
 		<script>
+
+			
+
+			
+			
+			
 			
             function Party(name, date, guest, time){
 				this.name = name;
@@ -132,6 +140,7 @@
 				var item3 = document.getElementById("numberOfGuestsInput").value;
 				var item4 = document.getElementById("timeInput").value;
 				
+
 				
 				if(item && item2 && item3 && item4){
 					var text = document.createTextNode("PARTY: " + item + " DATE: " + item2 + " GUESTS(s): " + item3 + " TIME:  " + item4);

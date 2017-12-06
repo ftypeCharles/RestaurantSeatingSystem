@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Settings</title>
+    </head>
+    
+    <style>
+    body{
+        background: whitesmoke;
+        
+    }
+    h1{
+        text-align: center;
+        background-color: dodgerblue;
+		color: white;
+        font-size: 144;
+		font: 64px Impact;
+		font-weight: bold;
+		margin-top: 5px;
+    	margin-bottom: 50px;
+    	padding-left: 5px;
+        
+        
+    }
+    form{
+        
+		
+        text-align: center;
+        
+		background-color: rgb(238, 238, 238);
+		
+    }
+	ul li{
+		background-color: rgb(238, 238, 238);
+		font: 20px Georgia, sans-serif;
+	}
+
+	ul li:hover{
+    background: #888;
+    color: #fff;
+    
+	}
+
+	label{
+		font: 28px Verdana, sans-serif;
+	}
+	input{
+		width: 200px;
+		height: 25px;
+	}
+	button{
+		background-color: dodgerblue;
+    	color: white;
+    	text-align: center;
+    	
+		font: 24px Impact;
+	}
+        
+   
+    
+    </style>
+	
+    <body>
+		
+		<h1 id="heading1">Settings</h1>
+
+        <a href="reservationSim.html"><button id="button1">View Reservation List</button></a>
+        <a href="assignServer.html"><button id="button2">Assign Server</button></a>
+        <a href="help.html"><button id="button3">Help</button></a>
+        
+        <form>
+                <input type="radio" id = "colorBlindInput" name="colorBlind" value="on" > On<br>
+                <input type="radio" id = "colorBlindInput" name="colorBlind" value="off" checked> Off<br>
+
+                <button type = "button" id = "button4" onclick="select()"> Select</button>
+                
+              </form>
+       
+       
+       
+       <script>
+        
+        var colorBlindOn;
+        
+        
+        function select(){
+            colorBlindOn = document.getElementById("colorBlindInput").checked;
+
+            
+
+            
+            
+            if(colorBlindOn){
+                alert("ColorBlind Mode On");
+                var tag = document.getElementById("heading1");
+                tag.style.backgroundColor = "#EEE8AA";
+                var push = document.getElementById("button1");
+                push.style.backgroundColor = "#EEE8AA";
+
+                var push2 = document.getElementById("button2");
+                push2.style.backgroundColor = "#EEE8AA";
+
+                var push3 = document.getElementById("button3");
+                push3.style.backgroundColor = "#EEE8AA";
+
+                var push4 = document.getElementById("button4");
+                push4.style.backgroundColor = "#EEE8AA";
+            }else if(!colorBlindOn){
+                alert("ColorBlind Mode Off");
+                var tag = document.getElementById("heading1");
+                tag.style.backgroundColor = "dodgerblue";
+                var push = document.getElementById("button1");
+                push.style.backgroundColor = "dodgerblue";
+
+                var push2 = document.getElementById("button2");
+                push2.style.backgroundColor = "dodgerblue";
+
+                var push3 = document.getElementById("button3");
+                push3.style.backgroundColor = "dodgerblue";
+
+                var push4 = document.getElementById("button4");
+                push4.style.backgroundColor = "dodgerBlue";
+            }
+
+        }
+        
+
+        
+        
+        </script>
+		
+	</body>
+</html>			

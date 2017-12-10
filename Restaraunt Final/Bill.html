@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bill</title>
+		<style>
+    		body{
+        		background: whitesmoke;
+
+    		}
+		    h1{
+		        text-align: center;
+				color: black;
+		        font-size: 50;
+				font: 36px Impact;
+				margin-top: 2px;
+		    	margin-bottom: 2px;
+		    	padding-left: 2px;
+
+
+		    }
+		   form{
+
+				text-align: center;
+				background-color: rgb(238, 238, 238);
+
+		    }
+			ul li{
+				background-color: rgb(238, 238, 238);
+			}
+
+			label{
+				font: 28px Verdana, sans-serif;
+			}
+
+
+			}
+			button{
+				background-color: dodgerblue;
+		    	color: white;
+		    	text-align: center;
+
+				font: 60px Impact;
+			}
+
+		</style>
+    </head>
+    <body>
+			<form id = "">
+
+			<h1> Get The Bill </h1>
+      <br>
+      <br>
+      <br>
+      <label for="Food Cost">Food cost:</label>
+			<input type = "number" input id="FoodPriceInput" placeholder ="Enter the price">
+			<br>
+			<br>
+			<br>
+			<br>
+
+
+			<label for="Drink Cost">Drink Cost:</label>
+			<input type = "number" input id = "DrinkPriceInput" placeholder = "Enter the price">
+			<br>
+			<br>
+			<button type = "button" onclick="calcTotalBill()"> Calculate Bill</button>
+	</body>
+</html>
+<script>
+	/**
+	   Calculate
+	*/
+	function calcTotalBill(){
+		var foodCostInput = document.getElementById("FoodPriceInput").value;
+		var drinkCostInput = document.getElementById("DrinkPriceInput").value;
+		var foodCost= parseInt(foodCostInput);
+		var drinkCost = parseInt(drinkCostInput);
+
+		var tax = calcTax(foodCost, drinkCost);
+		var subTotal=calcSubTotal(tax, foodCost, drinkCost);
+
+		var tip = calcTip(subTotal);
+
+    var totalBill= tip+subTotal;
+    console.log("This is the total bill: " + totalBill);
+
+	}
+
+
+	function calcTax(foodCost, drinkCost){
+		tax=(foodCost+drinkCost)*(6/100);
+		return tax;
+
+	}
+
+
+	 function calcSubTotal(tax, foodCost, drinkCost){
+	    subTotal=tax+foodCost+drinkCost;
+	    return subTotal;
+	}
+
+	function calcTip(){
+		tip=subTotal*(20/100);
+		return tip;
+
+	}
+</script>

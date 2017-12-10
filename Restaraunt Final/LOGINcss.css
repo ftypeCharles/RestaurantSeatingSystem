@@ -1,0 +1,23 @@
+h1 {
+  text-align: center;
+}
+body {
+  background-image: url("kk.png");
+}
+
+label {
+  font: 28px Verdana, sans-serif;
+}
+input {
+  width: 200px;
+  height: 25px;
+}
+button {
+  background-color: dodgerblue;
+  color: white;
+  text-align: center;
+  font: 24px Impact;
+}
+form {
+  text-align: center;
+}

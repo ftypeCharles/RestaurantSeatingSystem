@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.sound.min.js"></script>
+    <script src="Ui.js"></script>
+    <script src="Seat.js"></script>
+    <script src="Table.js"></script>
+    <link rel="stylesheet" type="text/css" href="UIcss.css">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <a href="help.html" target="_blank"><button>Help</button></a>
+    </div>
+    <div class="form">
+      <form id = "reservationForm">
+
+        <label for="Party">Party:</label>
+  			<input id = "partyInput" placeholder ="Name of Party">
+
+  			<label for="Guest(s)">Guest(s):</label>
+  			<input type = "number" input id = "numberOfGuestsInput" placeholder ="Number of Guest(s)">
+
+  			<label for="Time">Time:</label>
+  			<input type = "time" id = "timeInput">
+        <br>
+        <br>
+  			<button type = "button" onclick="reservationList()"> Add Reservation</button>
+  		</form>
+    </div>
+
+		<ul id = "reservationList">
+		</ul>
+
+		<script>
+      function Party(name, guest, time){
+				this.name = name;
+				this.guest = guest;
+				this.time = time;
+
+				this.info = function(){
+					return this.name + " " + this.guest + " " + this.time;
+				}
+			}
+
+			var partyGuest = new Array(10);
+			var j = 1;
+
+			function reservationList() {
+				var item = document.getElementById("partyInput").value;
+				var item2 = document.getElementById("numberOfGuestsInput").value;
+				var item3 = document.getElementById("timeInput").value;
+
+
+				if(item && item2 && item3){
+					var text = document.createTextNode("Party: " + item + " Guests: " + item2 + " Time: " + item3 + " Type a table here(lowercase): ");
+					var newItem = document.createElement("li");
+					var anotherItem = document.createElement("br");
+					newItem.appendChild(text);
+					document.getElementById("reservationList").appendChild(newItem);
+					document.getElementById("reservationList").appendChild(anotherItem);
+
+					partyGuest[j] = new Party(item, item2, item3);
+					j++;
+
+				}else{
+					alert("Enter all information please!")
+				}
+
+
+				var reservationListItem = document.getElementsByTagName("li");
+        var button = document.createElement("button");
+
+        var input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", "sectionInput");
+
+        button.innerHTML = "Seat";
+        reservationListItem[reservationListItem.length-1].appendChild(input);
+        reservationListItem[reservationListItem.length-1].appendChild(button);
+        button.addEventListener ("click", function() {
+          var sectionNumber = document.getElementById("sectionInput").value;
+          seatParty(this.parentNode, sectionNumber);
+          this.parentNode.parentNode.removeChild(this.parentNode);
+        });
+			}
+		</script>
+  </body>
+</html>

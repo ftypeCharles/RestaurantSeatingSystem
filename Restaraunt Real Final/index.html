@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.sound.min.js"></script>
+    <script src="Ui.js"></script>
+    <script src="Seat.js"></script>
+    <script src="Table.js"></script>
+    <link rel="stylesheet" type="text/css" href="UIcss.css">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <a href="help.html" target="_blank"><button>Help</button></a>
+      <a href="Bill.html" target="_blank"><button>Bill</button></a>
+      <a href="login.html"><button>Logout</button></a>
+      <button type = "button" onclick="darkModeON()">Dark Mode On</button>
+      <button type = "button" onclick="darkModeOFF()">Dark Mode OFF</button>
+    </div>
+    <div class="form">
+      <form id = "reservationForm">
+
+        <label for="Party">Party:</label>
+  			<input id = "partyInput" placeholder ="Name of Party">
+
+  			<label for="Guest(s)">Guest(s):</label>
+  			<input type = "number" input id = "numberOfGuestsInput" placeholder ="Number of Guest(s)">
+
+  			<label for="Time">Time:</label>
+  			<input type = "time" id = "timeInput">
+        <br>
+        <br>
+  			<button type = "button" onclick="reservationList()"> Add Reservation</button>
+  		</form>
+    </div>
+
+		<ul id = "reservationList">
+		</ul>
+
+		<script>
+      function Party(name, guest, time){
+				this.name = name;
+				this.guest = guest;
+				this.time = time;
+
+				this.info = function(){
+					return this.name + " " + this.guest + " " + this.time;
+				}
+			}
+
+			var partyGuest = new Array(10);
+			var j = 1;
+
+			function reservationList() {
+				var item = document.getElementById("partyInput").value;
+				var item2 = document.getElementById("numberOfGuestsInput").value;
+				var item3 = document.getElementById("timeInput").value;
+
+
+				if(item && item2 && item3){
+					var text = document.createTextNode("Party: " + item + " Guests: " + item2 + " Time: " + item3 + " Type a table here(lowercase): ");
+					var newItem = document.createElement("li");
+					var anotherItem = document.createElement("br");
+					newItem.appendChild(text);
+					document.getElementById("reservationList").appendChild(newItem);
+					document.getElementById("reservationList").appendChild(anotherItem);
+
+					partyGuest[j] = new Party(item, item2, item3);
+					j++;
+
+				}else{
+					alert("Enter all information please!")
+				}
+
+
+        var reservationListItem = document.getElementsByTagName("li");
+        var button = document.createElement("button");
+				var editButton = document.createElement("button");
+
+        var input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", "sectionInput");
+
+				var editInputParty = document.createElement("input");
+				editInputParty.setAttribute("placeholder", "Party");
+				editInputParty.setAttribute("type", "text");
+				editInputParty.setAttribute("id", "party");
+
+				var editInputNumberOfGuest = document.createElement("input");
+				editInputNumberOfGuest.setAttribute("placeholder", "Guest(s)");
+				editInputNumberOfGuest.setAttribute("type", "number");
+				editInputNumberOfGuest.setAttribute("id", "guest");
+
+
+				var editInputTime = document.createElement("input");
+				editInputTime.setAttribute("placeholder", "time");
+				editInputTime.setAttribute("type", "time");
+				editInputTime.setAttribute("id", "time");
+
+
+        button.innerHTML = "Seat";
+				editButton.innerHTML = "Edit";
+        reservationListItem[reservationListItem.length-1].appendChild(input);
+        reservationListItem[reservationListItem.length-1].appendChild(button);
+				reservationListItem[reservationListItem.length-1].appendChild(editButton);
+        //CLICK SEAT BUTTON
+				button.addEventListener ("click", function() {
+          var sectionNumber = document.getElementById("sectionInput").value;
+          seatParty(this.parentNode, sectionNumber);
+          this.parentNode.parentNode.removeChild(this.parentNode);
+        });
+				//CLICK EDIT BUTTON
+				editButton.addEventListener("click", function(){
+
+					reservationListItem[reservationListItem.length-1].appendChild(editInputParty);
+					reservationListItem[reservationListItem.length-1].appendChild(editInputNumberOfGuest);
+					reservationListItem[reservationListItem.length-1].appendChild(editInputTime);
+
+					var submitButton = document.createElement("button");
+					submitButton.innerHTML = "Submit";
+					reservationListItem[reservationListItem.length-1].appendChild(submitButton);
+
+					submitButton.addEventListener("click", function(){
+
+						var newParty = document.getElementById("party").value;
+						var newGuest = document.getElementById("guest").value;
+						var newTime = document.getElementById("time").value;
+
+						reservationListItem[reservationListItem.length-1].innerText = "Party: " + newParty + " Guests: " + newGuest + " Time: " + newTime + " Type a table here(lowercase): ";
+						reservationListItem[reservationListItem.length-1].appendChild(input);
+        		reservationListItem[reservationListItem.length-1].appendChild(button);
+
+					});//submit button done
+
+				});
+
+
+			}
+
+			function darkModeON(){
+					alert("Dark Mode ON");
+
+
+					document.body.style.background = "rgb(30,30,30)";
+
+
+			}
+
+			function darkModeOFF(){
+					alert("dark OFF");
+
+
+					document.body.style.background = "rgb(238, 238, 238)";
+
+			}
+		</script>
+  </body>
+</html>

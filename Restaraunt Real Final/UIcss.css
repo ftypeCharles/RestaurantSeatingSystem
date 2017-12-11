@@ -1,0 +1,33 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: rgb(238, 238, 238);
+}
+.wrapper{
+  text-align: center;
+}
+.form {
+  text-align: center;
+  margin-top: 620px;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+  color: dodgerblue;
+}
+button {
+  background-color: dodgerblue;
+  color: white;
+  text-align: center;
+  font: 24px Impact;
+  border-style: solid;
+}
+label {
+  font: 14px Verdana, sans-serif;
+}
+
+#reservationList {
+  position: absolute;
+  top: 715px;
+}

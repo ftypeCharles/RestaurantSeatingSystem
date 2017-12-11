@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LogIn</title>
+		<link rel="stylesheet" type="text/css" href="LOGINcss.css">
+  </head>
+
+	<body>
+    <h1><img src="logo.png"></h1>
+
+    <form id = "logInForm">
+
+			<input id = "userInput" placeholder ="username">
+			<br>
+			<br>
+			<br>
+			<br>
+
+			<input id = "password" placeholder = "password" type="password">
+			<br>
+			<br>
+			<br>
+			<br>
+
+			<button type = "button" onclick="login()"> Login!</button>
+  	</form>
+
+    <script>
+      //login function
+      function login(){
+      	//input values
+      	var item = document.getElementById("userInput").value;
+				var item2 = document.getElementById("password").value;
+        //if form is complete
+        if(item && item2){
+        	//if credential is correct
+        	if(item == "admin" && item2 == "password"){
+          	alert("Success!");
+          	document.location.href = "index.html";
+        	}else{
+          	alert("Invalid Credentials")
+        	}
+        }else{
+          alert("Please Complete the Form");
+        }
+      }
+    </script>
+	</body>
+</html>
